@@ -9,7 +9,7 @@ body {
   }
   
   #game {
-    max-width: 500px;
+    max-width: 600px;
     max-height: 400px;
     background-color: #ffffff;
     color: #ffffff;
@@ -40,9 +40,13 @@ body {
     cursor: pointer;
     color: #0a0a23;
     background-color: #feac32;
-    background-image: linear-gradient(#fecc4c, #ffac33);
+    background-image: linear-gradient(#fecc4c, rgb(255, 172, 51));
     border: 3px solid #feac32;
   }
-  fa-solid fa-coins{
-    color: #ffffff;
+  .fa-coins{
+    color: #feac32;
   }
+  .fa-circle{
+    color: #c70d0d;
+  }
+  

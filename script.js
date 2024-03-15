@@ -7,6 +7,9 @@ let monsterHealth;
 let inventory = ["stick"];
 
 const button1 = document.querySelector('#button1');
+const icon1 = document.querySelector("#icon1")
+const icon2 = document.querySelector("#icon2")
+const icon3 = document.querySelector("#icon3")
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const text = document.querySelector("#text");
@@ -108,14 +111,29 @@ function update(location) {
 
 function goTown() {
   update(locations[0]);
+  icon1.className="fa-solid fa-store"
+  icon3.className="fa-solid fa-dragon"
+
+
+
+  
 }
 
 function goStore() {
   update(locations[1]);
+  icon1.className="fa-solid fa-coins";
+  icon2.className="fa-solid fa-shield";
+  icon3.className="fa-solid fa-people-roof"
+  
+
 }
 
 function goCave() {
   update(locations[2]);
+  icon1.className="fa-solid fa-circle"
+  icon2.className="fa-solid fa-circle";
+  icon3.className="fa-solid fa-store";
+  
 }
 
 function buyHealth() {
@@ -172,6 +190,7 @@ function fightBeast() {
 }
 
 function fightDragon() {
+  icon3.className="fa-solid fa-person-running";
   fighting = 2;
   goFight();
 }
