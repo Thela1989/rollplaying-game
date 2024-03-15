@@ -117,7 +117,6 @@ function goTown() {
 
 function goStore() {
   update(locations[1]);
-
   icon1.className = "fa-solid fa-coins";
   icon2.className = "fa-solid fa-shield";
   icon3.className = "fa-solid fa-people-roof";
