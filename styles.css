@@ -50,9 +50,15 @@ button {
   color: #574343;
 }
 .fa-diamond {
-  color: #574343;
+  color: #ff0000;
 }
 
+
+
+.fa-heart {
+  color: #ff0000;
+}
+  
 .fa-shield {
-  color: #3939f8;
+  color: #000000;
 }
