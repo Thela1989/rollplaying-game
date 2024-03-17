@@ -5,5 +5,8 @@ This is a role-playing game where the goal is to save the city's population by s
 
  
 #Todo:
+
 -add icons
 -add pictures
+-add soundeffects
+
