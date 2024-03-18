@@ -7,7 +7,6 @@ Now the game workes I will spend some time with the design. I decided to draw my
 ## Todo:
 
 -add icons<br>
--draw pictures
--add soundeffects
--add pictures 
-
+-draw pictures<br>
+-add pictures <br>
+-add soundeffect<br>
