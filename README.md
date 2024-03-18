@@ -4,9 +4,9 @@ This is a role-playing game where the goal is to save the city's population by s
  
 
  
-#Todo:
+## Todo:
 
--add icons
--add pictures
--add soundeffects
+add icons <br>
+add pictures<br>
+add soundeffects
 
