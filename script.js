@@ -117,6 +117,9 @@ function goTown() {
   update(locations[0]);
   icon1.className = "fa-solid fa-store";
   icon3.className = "fa-solid fa-dragon";
+  ljudkalla.src = "ljud/town.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function goStore() {
@@ -124,13 +127,19 @@ function goStore() {
   icon1.className = "fa-solid fa-heart"
   icon2.className = "fa-solid fa-shield";
   icon3.className = "fa-solid fa-people-roof";
+  ljudkalla.src = "ljud/store.mp3";
+  ljud.load();
+  ljud.play();
 }
-
+//behöver ändra ljud!
 function goCave() {
   update(locations[2]);
   icon1.className = "fa-solid fa-circle";
   icon2.className = "fa-solid fa-diamond";
   icon3.className = "fa-solid fa-store";
+  ljudkalla.src = "ljud/cave-monster-43826.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function buyHealth() {
@@ -205,7 +214,8 @@ function goFight() {
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsterHealth;
 }
-
+/*behöver ändra ljud. något läskligt och 
+maffigt ljud när spelaren attackerar draken!*/
 function attack() {
   text.innerText = "The " + monsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
@@ -230,6 +240,9 @@ function attack() {
     text.innerText += " Your " + inventory.pop() + " breaks.";
     currentWeapon--;
   }
+  ljudkalla.src = "ljud/sword-hit-7160.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function getMonsterAttackValue(level) {
