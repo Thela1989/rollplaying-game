@@ -7,6 +7,7 @@ let fighting;
 let monsterHealth;
 let inventory = ["stick"];
 
+const ljud = document.getElementById("ljud");
 const button1 = document.querySelector("#button1");
 const icon1 = document.querySelector("#icon1");
 const icon2 = document.querySelector("#icon2");
@@ -49,6 +50,7 @@ const locations = [
     "button text": ["Go to store", "Go to cave", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
     text: 'You are in the town square. You see a sign that says "Store".',
+    ljud: "ljud/shop.mp3",
   },
   {
     name: "store",
@@ -88,7 +90,7 @@ const locations = [
   },
   {
     name: "easter egg",
-    "button text": ["2", "8",  "Go to town square?"],
+    "button text": ["2", "8", "Go to town square?"],
     "button functions": [pickTwo, pickEight, goTown],
     text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!",
   },
@@ -118,9 +120,12 @@ function goTown() {
 
 function goStore() {
   update(locations[1]);
-  icon1.className = "fa-solid fa-heart"
+  icon1.className = "fa-solid fa-heart";
   icon2.className = "fa-solid fa-shield";
   icon3.className = "fa-solid fa-people-roof";
+  ljudkalla.src = "ljud/store.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function goCave() {
