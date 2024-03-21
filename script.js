@@ -113,6 +113,13 @@ function update(location) {
 }
 
 function goTown() {
+  if (fighting > -1) {
+    ljudkalla.src = "ljud/whoosh.mp3";
+    ljud.load();
+    ljud.play();
+    fighting = -1;
+  }
+
   update(locations[0]);
   icon1.className = "fa-solid fa-store";
   icon3.className = "fa-solid fa-dragon";
