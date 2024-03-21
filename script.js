@@ -1,6 +1,3 @@
-//variables and value at the beginning
-
-
 let level = 0;
 let xp = 0;
 let health = 100;
@@ -10,6 +7,7 @@ let fighting;
 let monsterHealth;
 let inventory = ["stick"];
 
+const ljud = document.getElementById("ljud");
 const button1 = document.querySelector("#button1");
 const icon1 = document.querySelector("#icon1");
 const icon2 = document.querySelector("#icon2");
@@ -52,6 +50,7 @@ const locations = [
     "button text": ["Go to store", "Go to cave", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
     text: 'You are in the town square. You see a sign that says "Store".',
+    ljud: "ljud/shop.mp3",
   },
   {
     name: "store",
@@ -91,7 +90,7 @@ const locations = [
   },
   {
     name: "easter egg",
-    "button text": ["6", "12",  "Go to town square?"],
+    "button text": ["2", "8", "Go to town square?"],
     "button functions": [pickTwo, pickEight, goTown],
     text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!",
   },
@@ -124,32 +123,32 @@ function goTown() {
   update(locations[0]);
   icon1.className = "fa-solid fa-store";
   icon3.className = "fa-solid fa-dragon";
-  ljudkalla.src = "ljud/town.mp3";
-  ljud.load();
-  ljud.play();
 }
 
 function goStore() {
   update(locations[1]);
-  icon1.className = "fa-solid fa-heart"
+  icon1.className = "fa-solid fa-heart";
   icon2.className = "fa-solid fa-shield";
   icon3.className = "fa-solid fa-people-roof";
   ljudkalla.src = "ljud/store.mp3";
   ljud.load();
   ljud.play();
 }
-//behöver ändra ljud!
+
 function goCave() {
   update(locations[2]);
   icon1.className = "fa-solid fa-circle";
   icon2.className = "fa-solid fa-diamond";
   icon3.className = "fa-solid fa-store";
-  ljudkalla.src = "ljud/cave-monster-43826.mp3";
+  ljudkalla.src = "ljud/cave-monster.mp3";
   ljud.load();
   ljud.play();
 }
 
 function buyHealth() {
+  ljudkalla.src = "ljud/collect.mp3";
+  ljud.load();
+  ljud.play();
   if (gold >= 10) {
     gold -= 10;
     health += 10;
@@ -161,6 +160,9 @@ function buyHealth() {
 }
 
 function buyWeapon() {
+  ljudkalla.src = "ljud/collect.mp3";
+  ljud.load();
+  ljud.play();
   if (currentWeapon < weapons.length - 1) {
     if (gold >= 30) {
       gold -= 30;
@@ -221,8 +223,7 @@ function goFight() {
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsterHealth;
 }
-/*behöver ändra ljud. något läskligt och 
-maffigt ljud när spelaren attackerar draken!*/
+
 function attack() {
   text.innerText = "The " + monsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
@@ -247,9 +248,6 @@ function attack() {
     text.innerText += " Your " + inventory.pop() + " breaks.";
     currentWeapon--;
   }
-  ljudkalla.src = "ljud/sword-hit-7160.mp3";
-  ljud.load();
-  ljud.play();
 }
 
 function getMonsterAttackValue(level) {
@@ -312,7 +310,7 @@ function pick(guess) {
     numbers.push(Math.floor(Math.random() * 11));
   }
   text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 10; i++) {
     text.innerText += numbers[i] + "\n";
   }
   if (numbers.includes(guess)) {
