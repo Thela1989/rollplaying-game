@@ -1,32 +1,40 @@
-
+@font-face {
+  font-family: "vintage";
+  src: url("/font/vinquerg.otf");
+}
 
 .header {
+  font-family: "vintage";
   border-style: solid;
   border-color: aqua;
   border-radius: 10px;
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 100px;
-  
 }
 h1 {
+  font-family: "vintage";
   background-color: #0a0a23;
-  color: #ffffff;
+  color: #feac32;
   margin-top: 10px;
   margin-left: 100;
   font-size: 90px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
   padding-left: 250px;
   padding-bottom: 50px;
 }
 h2 {
+  font-family: "vintage";
   margin-top: -100px;
   background-color: #0a0a23;
-  color: #ffffff;
+  color: #feac32;
   padding-left: 300px;
   margin-left: 100;
   font-size: 70px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#game {
+  font-family: ;
 }
 
 body {
