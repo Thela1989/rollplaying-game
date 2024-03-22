@@ -129,9 +129,9 @@ function goTown() {
 
 function goStore() {
   update(locations[1]);
-  icon1.className = "fa-solid fa-heart";
-  icon2.className = "fa-solid fa-shield";
-  icon3.className = "fa-solid fa-people-roof";
+  icon1.src = "iconer/health.png";
+  icon2.src = "iconer/sword.png";
+  icon3.src = "iconer/hall.png";
   ljudkalla.src = "ljud/store.mp3";
   ljud.load();
   ljud.play();
