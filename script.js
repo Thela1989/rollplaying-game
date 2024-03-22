@@ -118,7 +118,9 @@ function goTown() {
     ljud.load();
     ljud.play();
     fighting = -1;
-  }
+  } else ljudkalla.src = "ljud/town.mp3";
+  ljud.load();
+  ljud.play();
 
   update(locations[0]);
   icon1.className = "fa-solid fa-store";
@@ -197,6 +199,9 @@ function sellWeapon() {
 function fightSlime() {
   fighting = 0;
   goFight();
+  ljudkalla.src = "ljud/sword-hit-7160.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function fightBeast() {
@@ -204,6 +209,9 @@ function fightBeast() {
   fighting = 1;
   icon2.className = "fa-brands fa-slack";
   goFight();
+  ljudkalla.src = "ljud/sword-hit-7160.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function fightDragon() {
@@ -211,6 +219,9 @@ function fightDragon() {
   icon1.className = "fa-solid fa-bolt";
   icon2.className = "fa-brands fa-slack";
   icon3.className = "fa-solid fa-person-running";
+  ljudkalla.src = "ljud/dragon-roar.mp3";
+  ljud.load();
+  ljud.play();
 
   fighting = 2;
   goFight();
@@ -225,6 +236,9 @@ function goFight() {
 }
 
 function attack() {
+  ljudkalla.src = "ljud/sword-dragon.mp3";
+  ljud.load();
+  ljud.play();
   text.innerText = "The " + monsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
