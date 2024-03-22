@@ -24,7 +24,6 @@ h1 {
   margin-left: 100;
   font-size: 90px;
 
-  
   padding-bottom: 50px;
 }
 h2 {
@@ -35,9 +34,10 @@ h2 {
   margin-left: 100;
   font-size: 70px;
 }
-
-#icon2 {
-  width: 20px;
+#icon1,
+#icon2,
+#icon3 {
+  width: 30px;
 }
 
 #game {
@@ -98,7 +98,6 @@ button {
   padding-right: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
-
 }
 .fa-coins {
   color: #feac32;
