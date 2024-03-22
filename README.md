@@ -12,6 +12,10 @@ Now the game workes I will spend some time with the design. I decided to draw my
 -add soundeffect<br>
 ~-add font to head text~
 
-### Author: Therese Lagerhäll (github:Thela1989)
+## Author:
 
-### artist: Therese Lagerhäll
+Therese Lagerhäll (github:Thela1989)
+
+## artist:
+
+Therese Lagerhäll (github:Thela1989)
