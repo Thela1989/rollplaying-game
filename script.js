@@ -1,4 +1,3 @@
-let level = 0;
 let xp = 0;
 let health = 100;
 let gold = 50;
@@ -6,6 +5,8 @@ let currentWeapon = 0;
 let fighting;
 let monsterHealth;
 let inventory = ["stick"];
+
+//Användning av funktionen
 
 const ljud = document.getElementById("ljud");
 const button1 = document.querySelector("#button1");
@@ -313,6 +314,9 @@ function lose() {
   ljudkalla.src = "ljud/failure.mp3";
   ljud.load();
   ljud.play();
+  icon1.src = "iconer/star.png";
+  icon2.src = "iconer/star.png";
+  icon3.src = "iconer/star.png";
 }
 
 function winGame() {
@@ -332,7 +336,6 @@ function restart() {
   healthText.innerText = health;
   xpText.innerText = xp;
   goTown();
-  
 }
 
 function easterEgg() {
