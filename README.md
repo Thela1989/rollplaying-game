@@ -8,13 +8,21 @@ After the game has been tested, I have decided to make some updates. I will make
 
 ## Todo:
 
+<<<<<<< HEAD
+
 ~-add font to head text<br>~
 ~change the font family<br>~
+=======
+~-add font to head text<br>~
+~-add font family to the game<br>~
+
 ~-add icons<br>~
 -draw pictures<br>
 -add pictures <br>
 -add soundeffect<br>
+<<<<<<< HEAD
 -add new funtions (level)
+=======
 
 ## Author:
 
