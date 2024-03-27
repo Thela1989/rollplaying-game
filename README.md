@@ -9,7 +9,7 @@ After the game has been tested, I have decided to make some updates. I will make
 ## Todo:
 
 ~-add font to head text~
--add icons<br>
+~-add icons<br>~
 -draw pictures<br>
 -add pictures <br>
 -add soundeffect<br>
