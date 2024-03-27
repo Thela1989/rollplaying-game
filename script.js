@@ -147,7 +147,7 @@ function goCave() {
   icon2.src = "iconer/werewolf.png";
   icon3.src = "iconer/hall.png";
   ljudkalla.src = "ljud/cave-monster.mp3";
-  image.cave.src = "bilder till rollspel/cave.completed.jpg";
+  image.cave.src = "bilder-rollspel/cave.completed.jpg";
   ljud.load();
   ljud.play();
 }
