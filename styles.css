@@ -71,12 +71,13 @@ body {
 
 #text {
   background-color: #0a0a23;
-  color: #ffffff;
+  color: #feac32;
   padding: 100px;
   font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "vintage";
 }
 
 #game {

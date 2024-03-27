@@ -8,7 +8,8 @@ After the game has been tested, I have decided to make some updates. I will make
 
 ## Todo:
 
-~-add font to head text~
+~-add font to head text<br>~
+~change the font family<br>~
 ~-add icons<br>~
 -draw pictures<br>
 -add pictures <br>

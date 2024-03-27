@@ -310,15 +310,16 @@ function defeatMonster() {
 
 function lose() {
   update(locations[5]);
-  ljudkalla.src = "ljud/dragon-roar.mp3";
+  ljudkalla.src = "ljud/failure.mp3";
   ljud.load();
   ljud.play();
 }
 
-
-
 function winGame() {
   update(locations[6]);
+  ljudkalla.src = "you-win.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function restart() {
@@ -331,6 +332,7 @@ function restart() {
   healthText.innerText = health;
   xpText.innerText = xp;
   goTown();
+  
 }
 
 function easterEgg() {
