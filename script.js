@@ -73,7 +73,7 @@ const locations = [
   {
     name: "kill monster",
     "button text": ["Go to town square", "Go to town square", "Go to town square"],
-    "button functions": [goTown, goTown, easterEgg],
+    "button functions": [goStore, goTown, easterEgg],
     text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.',
   },
   {
@@ -218,16 +218,22 @@ function fightSlime() {
   ljudkalla.src = "ljud/slime-noise.mp3";
   ljud.load();
   ljud.play();
+  icon1.src = "iconer/attack.png";
+  icon2.src = "iconer/dodge.png";
+  icon3.src = "iconer/run.png";
 }
 
 function fightBeast() {
   console.log("fajtar beast");
   fighting = 1;
-  icon2.className = "fa-brands fa-slack";
+
   goFight();
   ljudkalla.src = "ljud/sword-hit-7160.mp3";
   ljud.load();
   ljud.play();
+  icon1.src = "iconer/attack.png";
+  icon2.src = "iconer/dodge.png";
+  icon3.src = "iconer/run.png";
 }
 
 function fightDragon() {
@@ -304,7 +310,12 @@ function defeatMonster() {
 
 function lose() {
   update(locations[5]);
+  ljudkalla.src = "ljud/dragon-roar.mp3";
+  ljud.load();
+  ljud.play();
 }
+
+
 
 function winGame() {
   update(locations[6]);
