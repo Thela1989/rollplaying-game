@@ -113,6 +113,9 @@ function update(location) {
 }
 
 function goTown() {
+  icon1.src = "iconer/Store.png";
+  icon2.src = "iconer/cave.png";
+  icon3.src = "iconer/dragon.png";
   if (fighting > -1) {
     ljudkalla.src = "ljud/whoosh.mp3";
     ljud.load();
@@ -130,7 +133,7 @@ function goTown() {
 function goStore() {
   update(locations[1]);
   icon1.src = "iconer/health.png";
-  icon2.src = "iconer/sword.png";
+  icon2.src = "iconer/money-bag.png";
   icon3.src = "iconer/hall.png";
   ljudkalla.src = "ljud/store.mp3";
   ljud.load();
@@ -139,9 +142,9 @@ function goStore() {
 
 function goCave() {
   update(locations[2]);
-  icon1.className = "fa-solid fa-circle";
-  icon2.className = "fa-solid fa-diamond";
-  icon3.className = "fa-solid fa-store";
+  icon1.src = "iconer/slime.png";
+  icon2.src = "iconer/werewolf.png";
+  icon3.src = "iconer/hall.png";
   ljudkalla.src = "ljud/cave-monster.mp3";
   ljud.load();
   ljud.play();
@@ -158,6 +161,9 @@ function buyHealth() {
     healthText.innerText = health;
   } else {
     text.innerText = "You do not have enough gold to buy health.";
+    ljudkalla.src = "ljud/wrong-buzzer.mp3";
+    ljud.load();
+    ljud.play();
   }
 }
 
@@ -176,15 +182,22 @@ function buyWeapon() {
       text.innerText += " In your inventory you have: " + inventory;
     } else {
       text.innerText = "You do not have enough gold to buy a weapon.";
+      ljudkalla.src = "ljud/wrong-buzzer.mp3";
+      ljud.load();
+      ljud.play();
     }
   } else {
     text.innerText = "You already have the most powerful weapon!";
     button2.innerText = "Sell weapon for 15 gold";
     button2.onclick = sellWeapon;
+    ljudkalla.src = "ljud/wrong-buzzer.mp3";
+    ljud.load();
+    ljud.play();
   }
 }
 
 function sellWeapon() {
+  icon2.src = "iconer/money-bag.png";
   if (inventory.length > 1) {
     gold += 15;
     goldText.innerText = gold;
@@ -193,13 +206,16 @@ function sellWeapon() {
     text.innerText += " In your inventory you have: " + inventory;
   } else {
     text.innerText = "Don't sell your only weapon!";
+    ljudkalla.src = "ljud/wrong-buzzer.mp3";
+    ljud.load();
+    ljud.play();
   }
 }
 
 function fightSlime() {
   fighting = 0;
   goFight();
-  ljudkalla.src = "ljud/sword-hit-7160.mp3";
+  ljudkalla.src = "ljud/slime-noise.mp3";
   ljud.load();
   ljud.play();
 }
@@ -216,9 +232,9 @@ function fightBeast() {
 
 function fightDragon() {
   console.log("fajtar drake");
-  icon1.className = "fa-solid fa-bolt";
-  icon2.className = "fa-brands fa-slack";
-  icon3.className = "fa-solid fa-person-running";
+  icon1.src = "iconer/attack.png";
+  icon2.src = "iconer/dodge.png";
+  icon3.src = "iconer/run.png";
   ljudkalla.src = "ljud/dragon-roar.mp3";
   ljud.load();
   ljud.play();
