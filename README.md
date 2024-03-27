@@ -6,7 +6,7 @@ Now the game workes I will spend some time with the design. I decided to draw my
 
 ## Todo:
 ~-add font to head text<br>~
-~-add font family to the game~
+~-add font family to the game<br>~
 ~-add icons<br>~
 -draw pictures<br>
 -add pictures <br>
