@@ -10,7 +10,8 @@ Now the game workes I will spend some time with the design. I decided to draw my
 -draw pictures<br>
 -add pictures <br>
 -add soundeffect<br>
-~-add font to head text~
+~-add font to head text~<br>
+~-add font family to the game~
 
 ## Author:
 
