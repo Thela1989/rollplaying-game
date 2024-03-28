@@ -47,12 +47,6 @@ h2 {
 }
 #image-with-text {
   position: relative;
-  width: 800px;
-  height: 507px;
-}
-#image {
-  width: 100%;
-  object-fit: contain;
 }
 
 .text-overlay {
@@ -84,9 +78,6 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "vintage";
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
 
 #game {
@@ -149,8 +140,4 @@ button {
 
 .fa-shield {
   color: #000000;
-}
-
-.hidden {
-  display: none;
 }
