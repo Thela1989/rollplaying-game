@@ -10,6 +10,7 @@ let inventory = ["stick"];
 const overlayText = document.getElementById("text-overlay");
 const image = document.getElementById("image");
 const ljud = document.getElementById("ljud");
+const ljudkalla = document.getElementById("ljudkalla");
 const button1 = document.querySelector("#button1");
 const icon1 = document.querySelector("#icon1");
 const icon2 = document.querySelector("#icon2");
@@ -133,6 +134,7 @@ function updateIcons(location) {
 }
 function playSound(location) {
   ljudkalla.src = location.sound;
+
   ljud.load();
   ljud.play();
 }
@@ -150,10 +152,6 @@ function goStore() {
 
 function goCave() {
   update(locations[2]);
-
-  ljudkalla.src = "ljud/cave-monster.mp3";
-  ljud.load();
-  ljud.play();
 }
 
 function buyHealth() {
@@ -209,6 +207,7 @@ function sellWeapon() {
 function fightSlime() {
   fighting = 0;
   goFight();
+  ljudkalla.src = "ljud/slime-noise.mp3";
 }
 
 function fightBeast() {
@@ -220,9 +219,9 @@ function fightBeast() {
 
 function fightDragon() {
   console.log("fajtar drake");
-
   fighting = 2;
   goFight();
+  ljudkalla.src = "ljud/dragon-roar.mp3";
 }
 
 function goFight() {
