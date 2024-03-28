@@ -208,13 +208,17 @@ function fightSlime() {
   fighting = 0;
   goFight();
   ljudkalla.src = "ljud/slime-noise.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function fightBeast() {
   console.log("fajtar beast");
   fighting = 1;
-
   goFight();
+  ljudkalla.src = "ljud/angry-beast.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function fightDragon() {
@@ -222,6 +226,8 @@ function fightDragon() {
   fighting = 2;
   goFight();
   ljudkalla.src = "ljud/dragon-roar.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function goFight() {
@@ -233,6 +239,9 @@ function goFight() {
 }
 
 function attack() {
+  ljudkalla.src = "ljud/attack.mp3";
+  ljud.load();
+  ljud.play();
   text.innerText = "The " + monsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
@@ -255,6 +264,8 @@ function attack() {
   if (Math.random() <= 0.1 && inventory.length !== 1) {
     text.innerText += " Your " + inventory.pop() + " breaks.";
     currentWeapon--;
+
+    [];
   }
 }
 
@@ -270,6 +281,9 @@ function isMonsterHit() {
 
 function dodge() {
   text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+  ljudkalla.src = "ljud/whoosh.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function defeatMonster() {
