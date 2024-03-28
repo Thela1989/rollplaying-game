@@ -1,3 +1,4 @@
+let level = 0;
 let xp = 0;
 let health = 100;
 let gold = 50;
@@ -5,8 +6,6 @@ let currentWeapon = 0;
 let fighting;
 let monsterHealth;
 let inventory = ["stick"];
-
-//Användning av funktionen
 
 const ljud = document.getElementById("ljud");
 const button1 = document.querySelector("#button1");
@@ -74,7 +73,7 @@ const locations = [
   {
     name: "kill monster",
     "button text": ["Go to town square", "Go to town square", "Go to town square"],
-    "button functions": [goStore, goTown, easterEgg],
+    "button functions": [goTown, goTown, easterEgg],
     text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.',
   },
   {
@@ -82,12 +81,14 @@ const locations = [
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
     text: "You die. &#x2620;",
+    
   },
   {
     name: "win",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
     text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;",
+    
   },
   {
     name: "easter egg",
@@ -114,17 +115,12 @@ function update(location) {
 }
 
 function goTown() {
-  icon1.src = "iconer/Store.png";
-  icon2.src = "iconer/cave.png";
-  icon3.src = "iconer/dragon.png";
   if (fighting > -1) {
     ljudkalla.src = "ljud/whoosh.mp3";
     ljud.load();
     ljud.play();
     fighting = -1;
-  } else ljudkalla.src = "ljud/town.mp3";
-  ljud.load();
-  ljud.play();
+  }
 
   update(locations[0]);
   
@@ -132,9 +128,9 @@ function goTown() {
 
 function goStore() {
   update(locations[1]);
-  icon1.src = "iconer/health.png";
-  icon2.src = "iconer/money-bag.png";
-  icon3.src = "iconer/hall.png";
+  icon1.className = "fa-solid fa-heart";
+  icon2.className = "fa-solid fa-shield";
+  icon3.className = "fa-solid fa-people-roof";
   ljudkalla.src = "ljud/store.mp3";
   ljud.load();
   ljud.play();
@@ -142,13 +138,13 @@ function goStore() {
 
 function goCave() {
   update(locations[2]);
-  icon1.src = "iconer/slime.png";
-  icon2.src = "iconer/werewolf.png";
-  icon3.src = "iconer/hall.png";
+  icon1.className = "fa-solid fa-circle";
+  icon2.className = "fa-solid fa-diamond";
+  icon3.className = "fa-solid fa-store";
   ljudkalla.src = "ljud/cave-monster.mp3";
-  
   ljud.load();
   ljud.play();
+  
 }
 
 function buyHealth() {
@@ -162,9 +158,6 @@ function buyHealth() {
     healthText.innerText = health;
   } else {
     text.innerText = "You do not have enough gold to buy health.";
-    ljudkalla.src = "ljud/wrong-buzzer.mp3";
-    ljud.load();
-    ljud.play();
   }
 }
 
@@ -183,22 +176,15 @@ function buyWeapon() {
       text.innerText += " In your inventory you have: " + inventory;
     } else {
       text.innerText = "You do not have enough gold to buy a weapon.";
-      ljudkalla.src = "ljud/wrong-buzzer.mp3";
-      ljud.load();
-      ljud.play();
     }
   } else {
     text.innerText = "You already have the most powerful weapon!";
     button2.innerText = "Sell weapon for 15 gold";
     button2.onclick = sellWeapon;
-    ljudkalla.src = "ljud/wrong-buzzer.mp3";
-    ljud.load();
-    ljud.play();
   }
 }
 
 function sellWeapon() {
-  icon2.src = "iconer/money-bag.png";
   if (inventory.length > 1) {
     gold += 15;
     goldText.innerText = gold;
@@ -207,44 +193,26 @@ function sellWeapon() {
     text.innerText += " In your inventory you have: " + inventory;
   } else {
     text.innerText = "Don't sell your only weapon!";
-    ljudkalla.src = "ljud/wrong-buzzer.mp3";
-    ljud.load();
-    ljud.play();
   }
 }
 
 function fightSlime() {
   fighting = 0;
   goFight();
-  ljudkalla.src = "ljud/slime-noise.mp3";
-  ljud.load();
-  ljud.play();
-  icon1.src = "iconer/attack.png";
-  icon2.src = "iconer/dodge.png";
-  icon3.src = "iconer/run.png";
 }
 
 function fightBeast() {
   console.log("fajtar beast");
   fighting = 1;
-
+  icon2.className = "fa-brands fa-slack";
   goFight();
-  ljudkalla.src = "ljud/sword-hit-7160.mp3";
-  ljud.load();
-  ljud.play();
-  icon1.src = "iconer/attack.png";
-  icon2.src = "iconer/dodge.png";
-  icon3.src = "iconer/run.png";
 }
 
 function fightDragon() {
   console.log("fajtar drake");
-  icon1.src = "iconer/attack.png";
-  icon2.src = "iconer/dodge.png";
-  icon3.src = "iconer/run.png";
-  ljudkalla.src = "ljud/dragon-roar.mp3";
-  ljud.load();
-  ljud.play();
+  icon1.className = "fa-solid fa-bolt";
+  icon2.className = "fa-brands fa-slack";
+  icon3.className = "fa-solid fa-person-running";
 
   fighting = 2;
   goFight();
@@ -259,9 +227,6 @@ function goFight() {
 }
 
 function attack() {
-  ljudkalla.src = "ljud/sword-dragon.mp3";
-  ljud.load();
-  ljud.play();
   text.innerText = "The " + monsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
@@ -311,19 +276,10 @@ function defeatMonster() {
 
 function lose() {
   update(locations[5]);
-  ljudkalla.src = "ljud/failure.mp3";
-  ljud.load();
-  ljud.play();
-  icon1.src = "iconer/star.png";
-  icon2.src = "iconer/star.png";
-  icon3.src = "iconer/star.png";
 }
 
 function winGame() {
   update(locations[6]);
-  ljudkalla.src = "you-win.mp3";
-  ljud.load();
-  ljud.play();
 }
 
 function restart() {
