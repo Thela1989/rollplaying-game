@@ -52,7 +52,8 @@ const locations = [
     "button text": ["Go to store", "Go to cave", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
     text: 'You are in the town square. You see a sign that says "Store".',
-    ljud: "ljud/shop.mp3",
+    sound: "ljud/town.mp3",
+    icon: ["iconer/store.png", "iconer/cave.png", "iconer/dragon.png"],
   },
   {
     name: "store",
@@ -60,6 +61,8 @@ const locations = [
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store.",
     //image: "sökväg"
+    sound: "ljud/store.mp3",
+    icon: ["iconer/health.png", "iconer/sword.png", "iconer/hall.png"],
   },
   {
     name: "cave",
@@ -67,12 +70,15 @@ const locations = [
     "button functions": [fightSlime, fightBeast, goTown],
     text: "You enter the cave. You see some monsters.",
     image: "bilder till rollspel/cave.completed.jpg",
+    sound: "ljud/cave-monster.mp3",
+    icon: ["iconer/slime.png", "iconer/werewolf.png", "iconer/run.png"],
   },
   {
     name: "fight",
     "button text": ["Attack", "Dodge", "Run"],
     "button functions": [attack, dodge, goTown],
     text: "You are fighting a monster.",
+    icon: ["iconer/swords.png", "iconer/dodge.png", "iconer/run.png"],
   },
   {
     name: "kill monster",
@@ -116,13 +122,22 @@ function update(location) {
   text.innerHTML = location.text;
   image.src = location.image;
   overlayText.classList.add("hidden");
+  playSound(location);
+  updateIcons(location);
 }
 
+function updateIcons(location) {
+  icon1.src = location.icon[0];
+  icon2.src = location.icon[1];
+  icon3.src = location.icon[2];
+}
+function playSound(location) {
+  ljudkalla.src = location.sound;
+  ljud.load();
+  ljud.play();
+}
 function goTown() {
   if (fighting > -1) {
-    ljudkalla.src = "ljud/whoosh.mp3";
-    ljud.load();
-    ljud.play();
     fighting = -1;
   }
 
@@ -131,12 +146,6 @@ function goTown() {
 
 function goStore() {
   update(locations[1]);
-  icon1.src = "iconer/health.png";
-  icon2.src = "iconer/sword.png";
-  icon3.src = "iconer/hall.png";
-  ljudkalla.src = "ljud/store.mp3";
-  ljud.load();
-  ljud.play();
 }
 
 function goCave() {
@@ -205,15 +214,12 @@ function fightSlime() {
 function fightBeast() {
   console.log("fajtar beast");
   fighting = 1;
-  icon2.className = "fa-brands fa-slack";
+
   goFight();
 }
 
 function fightDragon() {
   console.log("fajtar drake");
-  icon1.className = "fa-solid fa-bolt";
-  icon2.className = "fa-brands fa-slack";
-  icon3.className = "fa-solid fa-person-running";
 
   fighting = 2;
   goFight();
