@@ -7,6 +7,8 @@ let fighting;
 let monsterHealth;
 let inventory = ["stick"];
 
+const overlayText = document.getElementById("text-overlay");
+const image = document.getElementById("image");
 const ljud = document.getElementById("ljud");
 const button1 = document.querySelector("#button1");
 const icon1 = document.querySelector("#icon1");
@@ -14,7 +16,7 @@ const icon2 = document.querySelector("#icon2");
 const icon3 = document.querySelector("#icon3");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
-const text = document.querySelector("#text");
+const text = document.querySelector("#game-text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
@@ -57,12 +59,14 @@ const locations = [
     "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store.",
+    //image: "sökväg" 
   },
   {
     name: "cave",
     "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
     "button functions": [fightSlime, fightBeast, goTown],
     text: "You enter the cave. You see some monsters.",
+    image: "bilder till rollspel/cave.completed.jpg"
   },
   {
     name: "fight",
@@ -81,14 +85,12 @@ const locations = [
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
     text: "You die. &#x2620;",
-    
   },
   {
     name: "win",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
     text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;",
-    
   },
   {
     name: "easter egg",
@@ -112,6 +114,10 @@ function update(location) {
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
   text.innerHTML = location.text;
+  image.src = location.image
+  overlayText.classList.add("hidden")
+  
+ 
 }
 
 function goTown() {
@@ -123,7 +129,6 @@ function goTown() {
   }
 
   update(locations[0]);
-  
 }
 
 function goStore() {
@@ -144,6 +149,7 @@ function goCave() {
   ljudkalla.src = "ljud/cave-monster.mp3";
   ljud.load();
   ljud.play();
+  
   
 }
 
