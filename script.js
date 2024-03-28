@@ -127,8 +127,7 @@ function goTown() {
   ljud.play();
 
   update(locations[0]);
-  icon1.className = "fa-solid fa-store";
-  icon3.className = "fa-solid fa-dragon";
+  
 }
 
 function goStore() {
