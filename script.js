@@ -59,14 +59,14 @@ const locations = [
     "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store.",
-    //image: "sökväg" 
+    //image: "sökväg"
   },
   {
     name: "cave",
     "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
     "button functions": [fightSlime, fightBeast, goTown],
     text: "You enter the cave. You see some monsters.",
-    image: "bilder till rollspel/cave.completed.jpg"
+    image: "bilder till rollspel/cave.completed.jpg",
   },
   {
     name: "fight",
@@ -114,10 +114,8 @@ function update(location) {
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
   text.innerHTML = location.text;
-  image.src = location.image
-  overlayText.classList.add("hidden")
-  
- 
+  image.src = location.image;
+  overlayText.classList.add("hidden");
 }
 
 function goTown() {
@@ -133,9 +131,9 @@ function goTown() {
 
 function goStore() {
   update(locations[1]);
-  icon1.className = "fa-solid fa-heart";
-  icon2.className = "fa-solid fa-shield";
-  icon3.className = "fa-solid fa-people-roof";
+  icon1.src = "iconer/health.png";
+  icon2.src = "iconer/sword.png";
+  icon3.src = "iconer/hall.png";
   ljudkalla.src = "ljud/store.mp3";
   ljud.load();
   ljud.play();
@@ -143,18 +141,15 @@ function goStore() {
 
 function goCave() {
   update(locations[2]);
-  icon1.className = "fa-solid fa-circle";
-  icon2.className = "fa-solid fa-diamond";
-  icon3.className = "fa-solid fa-store";
+
   ljudkalla.src = "ljud/cave-monster.mp3";
   ljud.load();
   ljud.play();
-  
-  
 }
 
 function buyHealth() {
   ljudkalla.src = "ljud/collect.mp3";
+
   ljud.load();
   ljud.play();
   if (gold >= 10) {
