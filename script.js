@@ -67,8 +67,8 @@ const locations = [
   },
   {
     name: "cave",
-    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
-    "button functions": [fightSlime, fightBeast, goTown],
+    "button text": ["Fight slime", "Fight fanged beast", "Run"],
+    "button functions": [fightSlime, fightBeast, run],
     text: "You enter the cave. You see some monsters.",
     image: "bilder till rollspel/cave.completed.jpg",
     sound: "ljud/cave-monster.mp3",
@@ -77,7 +77,7 @@ const locations = [
   {
     name: "fight",
     "button text": ["Attack", "Dodge", "Run"],
-    "button functions": [attack, dodge, goTown],
+    "button functions": [attack, dodge, run],
     text: "You are fighting a monster.",
     icon: ["iconer/swords.png", "iconer/dodge.png", "iconer/run.png"],
   },
@@ -144,6 +144,14 @@ function goTown() {
   }
 
   update(locations[0]);
+}
+
+function run() {
+  ljudkalla.src = "ljud/run.mp3";
+  ljud.load();
+  ljud.play();
+  console.log("test test");
+  setTimeout(goTown, 2000);
 }
 
 function goStore() {
@@ -295,6 +303,11 @@ function defeatMonster() {
 }
 
 function lose() {
+  button1.classList.add("hidden");
+  button3.classList.add("hidden");
+  icon1.classList.add("hidden");
+  icon2.classList.add("hidden");
+  icon3.classList.add("hidden");
   update(locations[5]);
 }
 
@@ -303,6 +316,11 @@ function winGame() {
 }
 
 function restart() {
+  button1.classList.remove("hidden");
+  button3.classList.remove("hidden");
+  icon1.classList.remove("hidden");
+  icon2.classList.remove("hidden");
+  icon3.classList.remove("hidden");
   xp = 0;
   health = 100;
   gold = 50;
