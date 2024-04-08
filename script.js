@@ -60,6 +60,7 @@ const locations = [
     name: "store",
     "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
     "button functions": [buyHealth, buyWeapon, goTown],
+    /*jag vill lägga till samma bild i text som framsida*/
     text: "You enter the store.",
     //image: "sökväg"
     sound: "ljud/store.mp3",
@@ -113,6 +114,8 @@ button2.onclick = goCave;
 button3.onclick = fightDragon;
 
 function update(location) {
+  text.classList.remove("hidden");
+
   monsterStats.style.display = "none";
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];

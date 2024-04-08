@@ -44,13 +44,20 @@ h2 {
   flex-direction: column;
   position: relative;
   width: 100vw;
-  
 }
+#game-text {
+  background-image: url("bilder till rollspel/paper.jpg");
+  padding: 20px 8px 20px 8px;
+  color: #0a0a23;
+  object-fit: contain;
+  box-shadow: -41px 26px 79px 26px rgba(255, 255, 255, 0.75);
+}
+
 #image-with-text {
   position: relative;
   width: 800px;
   height: 507px;
-
+  box-shadow: -41px 26px 79px 26px rgba(255, 255, 255, 0.75);
 }
 #image {
   width: 100%;
@@ -140,7 +147,6 @@ button {
   box-shadow: 30px;
   border-radius: 50px;
 }
-
 
 .hidden {
   display: none;
