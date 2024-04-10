@@ -2,6 +2,26 @@
   font-family: "vintage";
   src: url("/font/vinquerg.otf");
 }
+.custom-button {
+  color: #fe0000cb;
+  width: 200px;
+  font-size: 30px;
+  font-family: "vintage";
+  box-shadow: #feac32;
+  box-shadow: -1px 1px 53px 9px rgba(255, 251, 251, 0.78);
+}
+.custom-button:hover {
+  color: #ff0000;
+  background-color: #feac32;
+  background-image: linear-gradient(rgb(255, 172, 51), #fecc4c);
+  border: 3px solid #feac32;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  align-items: flex-end;
+}
 
 .header {
   font-family: "vintage";
@@ -15,6 +35,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: -1px 1px 53px 9px rgba(239, 233, 233, 0.78);
 }
 h1 {
   font-family: "vintage";
@@ -25,6 +46,7 @@ h1 {
   font-size: 90px;
 
   padding-bottom: 50px;
+ 
 }
 h2 {
   font-family: "vintage";
@@ -59,10 +81,7 @@ h2 {
   height: 507px;
   box-shadow: -41px 26px 79px 26px rgba(255, 255, 255, 0.75);
 }
-#image {
-  width: 100%;
-  object-fit: contain;
-}
+
 
 .text-overlay {
   position: absolute;
@@ -146,8 +165,20 @@ button {
   box-shadow: #ffffff;
   box-shadow: 30px;
   border-radius: 50px;
+  font-family: "vintage";
+  font-size: 20px;
 }
 
 .hidden {
   display: none;
+}
+
+.front-page{
+  box-shadow: -1px 1px 53px 9px rgba(255, 255, 255, 0.78);
+}
+
+#image{
+ width: 800px;
+ box-shadow: -41px 26px 79px 26px rgba(255, 255, 255, 0.75);
+ 
 }

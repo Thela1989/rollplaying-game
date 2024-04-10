@@ -1,6 +1,6 @@
 let level = 0;
 let playerLevel = 0;
-let currentXP = 0
+let currentXP = 0;
 let xp = 0;
 let health = 100;
 let gold = 50;
@@ -143,9 +143,11 @@ function playSound(location) {
   ljud.load();
   ljud.play();
 }
-function goTown() {
+function goTown() { 
+  image.src = "bilder till rollspel/town.png";
   if (fighting > -1) {
     fighting = -1;
+   
   }
 
   update(locations[0]);
@@ -161,6 +163,7 @@ function run() {
 
 function goStore() {
   update(locations[1]);
+  image.src = "bilder till rollspel/store.2.png";
 }
 
 function goCave() {
