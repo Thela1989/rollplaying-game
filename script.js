@@ -201,6 +201,10 @@ function buyWeapon() {
       inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
     } else {
+      ljudkalla.src = "ljud/wrong-buzzer.mp3";
+
+      ljud.load();
+      ljud.play();
       text.innerText = "You do not have enough gold to buy a weapon.";
     }
   } else {
@@ -274,6 +278,7 @@ function attack() {
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
   if (health <= 0) {
+   
     lose();
   } else if (monsterHealth <= 0) {
     if (fighting === 2) {
@@ -321,6 +326,7 @@ function lose() {
   icon1.classList.add("hidden");
   icon2.classList.add("hidden");
   icon3.classList.add("hidden");
+
   update(locations[5]);
 }
 
@@ -329,6 +335,10 @@ function winGame() {
 }
 
 function restart() {
+  ljudkalla.src = "ljud/failure1.mp3";
+
+  ljud.load();
+  ljud.play();
   button1.classList.remove("hidden");
   button3.classList.remove("hidden");
   icon1.classList.remove("hidden");
