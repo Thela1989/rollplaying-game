@@ -143,22 +143,24 @@ function playSound(location) {
   ljud.load();
   ljud.play();
 }
-function goTown() { 
-  image.src = "bilder till rollspel/town.png";
+function goTown() {
   if (fighting > -1) {
     fighting = -1;
-   
   }
 
   update(locations[0]);
+  image.src = "bilder till rollspel/town1.png";
 }
 
 function run() {
+  image.src = "bilder till rollspel/running.png";
   ljudkalla.src = "ljud/run.mp3";
   ljud.load();
   ljud.play();
   console.log("test test");
   setTimeout(goTown, 2000);
+
+  image.src = "bilder till rollspel/man.running.png";
 }
 
 function goStore() {
@@ -226,6 +228,7 @@ function fightSlime() {
   ljudkalla.src = "ljud/slime-noise.mp3";
   ljud.load();
   ljud.play();
+  image.src = "bilder till rollspel/slimemonster.jpg";
 }
 
 function fightBeast() {
@@ -235,6 +238,7 @@ function fightBeast() {
   ljudkalla.src = "ljud/angry-beast.mp3";
   ljud.load();
   ljud.play();
+  image.src = "bilder till rollspel/beast.jpg";
 }
 
 function fightDragon() {
@@ -244,6 +248,7 @@ function fightDragon() {
   ljudkalla.src = "ljud/dragon-roar.mp3";
   ljud.load();
   ljud.play();
+  image.src = "bilder till rollspel/drake.jpg";
 }
 
 function goFight() {
