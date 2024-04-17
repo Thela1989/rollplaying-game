@@ -95,11 +95,12 @@ const locations = [
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
     text: "You die. &#x2620;",
+    image: "bilder till rollspel/die.jpg",
   },
   {
     name: "win",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
-    "button functions": [restart, restart, restart],
+    "button functions": [restart],
     text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;",
   },
   {
@@ -165,7 +166,7 @@ function run() {
 
 function goStore() {
   update(locations[1]);
-  image.src = "bilder till rollspel/store.2.png";
+  image.src = "bilder till rollspel/store2.jpg";
 }
 
 function goCave() {
@@ -252,7 +253,7 @@ function fightDragon() {
   ljudkalla.src = "ljud/dragon-roar.mp3";
   ljud.load();
   ljud.play();
-  image.src = "bilder till rollspel/drake.jpg";
+  image.src = "bilder till rollspel/dragon2.jpg";
 }
 
 function goFight() {
@@ -278,7 +279,6 @@ function attack() {
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
   if (health <= 0) {
-   
     lose();
   } else if (monsterHealth <= 0) {
     if (fighting === 2) {
@@ -326,6 +326,9 @@ function lose() {
   icon1.classList.add("hidden");
   icon2.classList.add("hidden");
   icon3.classList.add("hidden");
+  ljudkalla.src = "ljud/store.mp3";
+  ljud.load();
+  ljud.play();
 
   update(locations[5]);
 }

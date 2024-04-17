@@ -46,7 +46,6 @@ h1 {
   font-size: 90px;
 
   padding-bottom: 50px;
- 
 }
 h2 {
   font-family: "vintage";
@@ -69,19 +68,20 @@ h2 {
 }
 #game-text {
   background-image: url("bilder till rollspel/paper.jpg");
-  padding: 20px 8px 20px 8px;
+  padding: 20px 8px 40px 8px;
   color: #0a0a23;
   object-fit: contain;
   box-shadow: -41px 26px 79px 26px rgba(255, 255, 255, 0.75);
+  max-width: 500px;
 }
 
 #image-with-text {
   position: relative;
   width: 800px;
   height: 507px;
+
   box-shadow: -41px 26px 79px 26px rgba(255, 255, 255, 0.75);
 }
-
 
 .text-overlay {
   position: absolute;
@@ -173,16 +173,16 @@ button {
   display: none;
 }
 
-.front-page{
+.front-page {
   box-shadow: -1px 1px 53px 9px rgba(255, 255, 255, 0.78);
 }
 
-#image{
- width: 800px;
- height: 550px;
- box-shadow: -41px 26px 79px 26px rgba(255, 255, 255, 0.75);
- display: flex;
- justify-content: center;
- align-items: center;
- flex-direction: row;
- ;}
+#image {
+  width: 800px;
+  height: 550px;
+  box-shadow: -41px 26px 79px 26px rgba(255, 255, 255, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
