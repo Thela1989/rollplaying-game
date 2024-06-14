@@ -1,4 +1,6 @@
 let level = 0;
+let playerLevel = 0;
+let currentXP = 0;
 let xp = 0;
 let health = 100;
 let gold = 50;
@@ -7,13 +9,17 @@ let fighting;
 let monsterHealth;
 let inventory = ["stick"];
 
+const overlayText = document.getElementById("text-overlay");
+const image = document.getElementById("image");
+const ljud = document.getElementById("ljud");
+const ljudkalla = document.getElementById("ljudkalla");
 const button1 = document.querySelector("#button1");
 const icon1 = document.querySelector("#icon1");
 const icon2 = document.querySelector("#icon2");
 const icon3 = document.querySelector("#icon3");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
-const text = document.querySelector("#text");
+const text = document.querySelector("#game-text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
@@ -49,24 +55,34 @@ const locations = [
     "button text": ["Go to store", "Go to cave", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
     text: 'You are in the town square. You see a sign that says "Store".',
+    sound: "ljud/town.mp3",
+    icon: ["iconer/store.png", "iconer/cave.png", "iconer/dragon.png"],
   },
   {
     name: "store",
     "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
     "button functions": [buyHealth, buyWeapon, goTown],
+    /*jag vill lägga till samma bild i text som framsida*/
     text: "You enter the store.",
+    //image: "sökväg"
+    sound: "ljud/store.mp3",
+    icon: ["iconer/health.png", "iconer/sword.png", "iconer/hall.png"],
   },
   {
     name: "cave",
-    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
-    "button functions": [fightSlime, fightBeast, goTown],
+    "button text": ["Fight slime", "Fight fanged beast", "Run"],
+    "button functions": [fightSlime, fightBeast, run],
     text: "You enter the cave. You see some monsters.",
+    image: "bilder till rollspel/cave.completed.jpg",
+    sound: "ljud/cave-monster.mp3",
+    icon: ["iconer/slime.png", "iconer/werewolf.png", "iconer/run.png"],
   },
   {
     name: "fight",
     "button text": ["Attack", "Dodge", "Run"],
-    "button functions": [attack, dodge, goTown],
+    "button functions": [attack, dodge, run],
     text: "You are fighting a monster.",
+    icon: ["iconer/swords.png", "iconer/dodge.png", "iconer/run.png"],
   },
   {
     name: "kill monster",
@@ -79,16 +95,17 @@ const locations = [
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
     text: "You die. &#x2620;",
+    image: "bilder till rollspel/die.jpg",
   },
   {
     name: "win",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
-    "button functions": [restart, restart, restart],
+    "button functions": [restart],
     text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;",
   },
   {
     name: "easter egg",
-    "button text": ["2", "8",  "Go to town square?"],
+    "button text": ["2", "8", "Go to town square?"],
     "button functions": [pickTwo, pickEight, goTown],
     text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!",
   },
@@ -100,6 +117,8 @@ button2.onclick = goCave;
 button3.onclick = fightDragon;
 
 function update(location) {
+  text.classList.remove("hidden");
+
   monsterStats.style.display = "none";
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
@@ -108,29 +127,57 @@ function update(location) {
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
   text.innerHTML = location.text;
+  image.src = location.image;
+  overlayText.classList.add("hidden");
+  playSound(location);
+  updateIcons(location);
 }
 
+function updateIcons(location) {
+  icon1.src = location.icon[0];
+  icon2.src = location.icon[1];
+  icon3.src = location.icon[2];
+}
+function playSound(location) {
+  ljudkalla.src = location.sound;
+
+  ljud.load();
+  ljud.play();
+}
 function goTown() {
+  if (fighting > -1) {
+    fighting = -1;
+  }
+
   update(locations[0]);
-  icon1.className = "fa-solid fa-store";
-  icon3.className = "fa-solid fa-dragon";
+  image.src = "bilder till rollspel/town1.png";
+}
+
+function run() {
+  image.src = "bilder till rollspel/running.png";
+  ljudkalla.src = "ljud/run.mp3";
+  ljud.load();
+  ljud.play();
+  console.log("test test");
+  setTimeout(goTown, 2000);
+
+  image.src = "bilder till rollspel/man.running.png";
 }
 
 function goStore() {
   update(locations[1]);
-  icon1.className = "fa-solid fa-heart"
-  icon2.className = "fa-solid fa-shield";
-  icon3.className = "fa-solid fa-people-roof";
+  image.src = "bilder till rollspel/store2.jpg";
 }
 
 function goCave() {
   update(locations[2]);
-  icon1.className = "fa-solid fa-circle";
-  icon2.className = "fa-solid fa-diamond";
-  icon3.className = "fa-solid fa-store";
 }
 
 function buyHealth() {
+  ljudkalla.src = "ljud/collect.mp3";
+
+  ljud.load();
+  ljud.play();
   if (gold >= 10) {
     gold -= 10;
     health += 10;
@@ -142,6 +189,9 @@ function buyHealth() {
 }
 
 function buyWeapon() {
+  ljudkalla.src = "ljud/collect.mp3";
+  ljud.load();
+  ljud.play();
   if (currentWeapon < weapons.length - 1) {
     if (gold >= 30) {
       gold -= 30;
@@ -152,6 +202,10 @@ function buyWeapon() {
       inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
     } else {
+      ljudkalla.src = "ljud/wrong-buzzer.mp3";
+
+      ljud.load();
+      ljud.play();
       text.innerText = "You do not have enough gold to buy a weapon.";
     }
   } else {
@@ -176,23 +230,30 @@ function sellWeapon() {
 function fightSlime() {
   fighting = 0;
   goFight();
+  ljudkalla.src = "ljud/slime-noise.mp3";
+  ljud.load();
+  ljud.play();
+  image.src = "bilder till rollspel/slimemonster.jpg";
 }
 
 function fightBeast() {
   console.log("fajtar beast");
   fighting = 1;
-  icon2.className = "fa-brands fa-slack";
   goFight();
+  ljudkalla.src = "ljud/angry-beast.mp3";
+  ljud.load();
+  ljud.play();
+  image.src = "bilder till rollspel/beast.jpg";
 }
 
 function fightDragon() {
   console.log("fajtar drake");
-  icon1.className = "fa-solid fa-bolt";
-  icon2.className = "fa-brands fa-slack";
-  icon3.className = "fa-solid fa-person-running";
-
   fighting = 2;
   goFight();
+  ljudkalla.src = "ljud/dragon-roar.mp3";
+  ljud.load();
+  ljud.play();
+  image.src = "bilder till rollspel/dragon2.jpg";
 }
 
 function goFight() {
@@ -204,6 +265,9 @@ function goFight() {
 }
 
 function attack() {
+  ljudkalla.src = "ljud/attack.mp3";
+  ljud.load();
+  ljud.play();
   text.innerText = "The " + monsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
@@ -226,6 +290,8 @@ function attack() {
   if (Math.random() <= 0.1 && inventory.length !== 1) {
     text.innerText += " Your " + inventory.pop() + " breaks.";
     currentWeapon--;
+
+    [];
   }
 }
 
@@ -241,6 +307,9 @@ function isMonsterHit() {
 
 function dodge() {
   text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+  ljudkalla.src = "ljud/whoosh.mp3";
+  ljud.load();
+  ljud.play();
 }
 
 function defeatMonster() {
@@ -252,6 +321,15 @@ function defeatMonster() {
 }
 
 function lose() {
+  button1.classList.add("hidden");
+  button3.classList.add("hidden");
+  icon1.classList.add("hidden");
+  icon2.classList.add("hidden");
+  icon3.classList.add("hidden");
+  ljudkalla.src = "ljud/store.mp3";
+  ljud.load();
+  ljud.play();
+
   update(locations[5]);
 }
 
@@ -260,6 +338,15 @@ function winGame() {
 }
 
 function restart() {
+  ljudkalla.src = "ljud/failure1.mp3";
+
+  ljud.load();
+  ljud.play();
+  button1.classList.remove("hidden");
+  button3.classList.remove("hidden");
+  icon1.classList.remove("hidden");
+  icon2.classList.remove("hidden");
+  icon3.classList.remove("hidden");
   xp = 0;
   health = 100;
   gold = 50;
