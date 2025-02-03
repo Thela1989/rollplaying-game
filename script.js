@@ -60,7 +60,11 @@ const locations = [
   },
   {
     name: "store",
-    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
+    "button text": [
+      "Buy 10 health (10 gold)",
+      "Buy weapon (30 gold)",
+      "Go to town square",
+    ],
     "button functions": [buyHealth, buyWeapon, goTown],
     /*jag vill lägga till samma bild i text som framsida*/
     text: "You enter the store.",
@@ -86,7 +90,11 @@ const locations = [
   },
   {
     name: "kill monster",
-    "button text": ["Go to town square", "Go to town square", "Go to town square"],
+    "button text": [
+      "Go to town square",
+      "Go to town square",
+      "Go to town square",
+    ],
     "button functions": [goTown, goTown, easterEgg],
     text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.',
   },
@@ -168,7 +176,10 @@ function goStore() {
   update(locations[1]);
   image.src = "bilder till rollspel/store2.jpg";
 }
-
+setTimeout(() => {
+  document.getElementById("image").src = "bilder till rollspel/paper.jpg";
+}, 3000);
+//funktion go to store//
 function goCave() {
   update(locations[2]);
 }
@@ -269,10 +280,12 @@ function attack() {
   ljud.load();
   ljud.play();
   text.innerText = "The " + monsters[fighting].name + " attacks.";
-  text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
+  text.innerText +=
+    " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+    monsterHealth -=
+      weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
   } else {
     text.innerText += " You miss.";
   }
